@@ -12,7 +12,9 @@
 
     <div id="root">
         <h1 v-text="content" @click="handleClick"></h1>
-        <div v-html="html"></div>
+        <div :title="title" v-html="html"></div>
+        <input type="text" v-model="text"/>
+        <div>{{text}}</div>
     </div>
 
     <script>
@@ -20,7 +22,9 @@
             el: "#root",
             data: {
                 content: "hello",
-                html: "<h1>Vue</h1>"
+                title: "this is Vue",
+                html: "<h1>Vue</h1>",
+                text: "this is text"
             },
             methods: {
                 handleClick: function () {
