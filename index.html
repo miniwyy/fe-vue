@@ -9,13 +9,15 @@
     <script src="vue.js"></script>
 </head>
 <body>
-    <div id="root">{{msg}}</div>
+    <!--挂载点，模板，实例之间的关系-->
+    <div id="root"></div>
 
     <script>
         new Vue({
             el: "#root",
+            template: "<h1>hello {{msg}}</h1>>",
             data: {
-                msg: "hello world"
+                msg: "world"
             }
         })
     </script>
