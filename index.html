@@ -32,13 +32,32 @@
             <button @click="handleInput">提交</button>
         </div>
         <ul>
-            <li v-for="(item, index) of inputList" :key="index">{{item}}</li>
+            <todo-item
+                v-for="(item, index) of inputList"
+                :key="index"
+                :content="item"
+            ></todo-item>
         </ul>
     </div>
 
     <script>
+
+        // 全局组件
+        Vue.component("todo-item", {
+           props: ['content'],
+           template: "<li>{{content}}</li>"
+        });
+
+        // 局部组件
+        // var TodoItem = {
+        //     template: "<li>item</li>"
+        // };
+
         new Vue({
             el: "#root",
+            // component: {
+            //     "todo-item": TodoItem
+            // },
             data: {
                 content: "hello",
                 title: "this is Vue",
