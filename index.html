@@ -21,6 +21,12 @@
         </div>
         <div>{{fullName}}</div>
         <div>{{count}}</div>
+        <div v-if="show">hello world（div消失）</div>
+        <div v-show="show">hello world（div隐藏）</div>
+        <button @click="handleButton">toggle</button>
+        <ul>
+            <li v-for="(item, index) of list" :key="index">{{item}}</li>
+        </ul>
     </div>
 
     <script>
@@ -33,11 +39,16 @@
                 text: "this is text",
                 firstName: "",
                 lastName: "",
-                count: 0
+                count: 0,
+                show: true,
+                list: [1, 2, 3]
             },
             methods: {
                 handleClick: function () {
                     this.content = "world"
+                },
+                handleButton: function () {
+                    this.show = !this.show;
                 }
             },
             computed: {
