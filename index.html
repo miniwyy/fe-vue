@@ -16,8 +16,8 @@
         <input type="text" v-model="text"/>
         <div>{{text}}</div>
         <div>
-            <input type="text" v-model="firstName">
-            <input type="text" v-model="lastName">
+            姓<input type="text" v-model="firstName">
+            名<input type="text" v-model="lastName">
         </div>
         <div>{{fullName}}</div>
         <div>{{count}}</div>
@@ -26,6 +26,13 @@
         <button @click="handleButton">toggle</button>
         <ul>
             <li v-for="(item, index) of list" :key="index">{{item}}</li>
+        </ul>
+        <div>
+            <input type="text" v-model="inputValue" />
+            <button @click="handleInput">提交</button>
+        </div>
+        <ul>
+            <li v-for="(item, index) of inputList" :key="index">{{item}}</li>
         </ul>
     </div>
 
@@ -41,7 +48,9 @@
                 lastName: "",
                 count: 0,
                 show: true,
-                list: [1, 2, 3]
+                list: [1, 2, 3],
+                inputValue: "",
+                inputList: []
             },
             methods: {
                 handleClick: function () {
@@ -49,6 +58,10 @@
                 },
                 handleButton: function () {
                     this.show = !this.show;
+                },
+                handleInput: function () {
+                    this.inputList.push(this.inputValue);
+                    this.inputValue = "";
                 }
             },
             computed: {
