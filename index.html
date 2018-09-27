@@ -44,8 +44,13 @@
 
         // 全局组件
         Vue.component("todo-item", {
-           props: ['content'],
-           template: "<li>{{content}}</li>"
+            props: ['content'],
+            template: "<li @click='handleClickLi'>{{content}}</li>",
+            methods: {
+                handleClickLi: function () {
+                    console.log('click')
+                }
+            }
         });
 
         // 局部组件
