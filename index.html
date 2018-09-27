@@ -15,6 +15,12 @@
         <div :title="title" v-html="html"></div>
         <input type="text" v-model="text"/>
         <div>{{text}}</div>
+        <div>
+            <input type="text" v-model="firstName">
+            <input type="text" v-model="lastName">
+        </div>
+        <div>{{fullName}}</div>
+        <div>{{count}}</div>
     </div>
 
     <script>
@@ -24,11 +30,24 @@
                 content: "hello",
                 title: "this is Vue",
                 html: "<h1>Vue</h1>",
-                text: "this is text"
+                text: "this is text",
+                firstName: "",
+                lastName: "",
+                count: 0
             },
             methods: {
                 handleClick: function () {
                     this.content = "world"
+                }
+            },
+            computed: {
+                fullName: function () {
+                    return this.firstName + " " + this.lastName
+                }
+            },
+            watch: {
+                fullName: function () {
+                    this.count++
                 }
             }
         })
