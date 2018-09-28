@@ -1,7 +1,7 @@
 <template>
   <div>
     <div>
-      <input type="text" v-model="inputValue">
+      <input class="item" type="text" v-model="inputValue">
       <button @click="handleSubmit">提交</button>
     </div>
     <ul>
