@@ -1,109 +1,12 @@
-<!doctype html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Vue</title>
-    <script src="vue.js"></script>
-</head>
-<body>
-
-    <div id="root">
-        <h1 v-text="content" @click="handleClick"></h1>
-        <div :title="title" v-html="html"></div>
-        <input type="text" v-model="text"/>
-        <div>{{text}}</div>
-        <div>
-            姓<input type="text" v-model="firstName">
-            名<input type="text" v-model="lastName">
-        </div>
-        <div>{{fullName}}</div>
-        <div>{{count}}</div>
-        <div v-if="show">hello world（div消失）</div>
-        <div v-show="show">hello world（div隐藏）</div>
-        <button @click="handleButton">toggle</button>
-        <ul>
-            <li v-for="(item, index) of list" :key="index">{{item}}</li>
-        </ul>
-        <div>
-            <input type="text" v-model="inputValue" />
-            <button @click="handleInput">提交</button>
-        </div>
-        <ul>
-            <todo-item
-                v-for="(item, index) of inputList"
-                :key="index"
-                :content="item"
-                :index="index"
-                @delete="handleDelete"
-            ></todo-item>
-        </ul>
-    </div>
-
-    <script>
-
-        // 全局组件
-        Vue.component("todo-item", {
-            props: ['content', 'index'],
-            template: "<li @click='handleClickLi'>{{content}}</li>",
-            methods: {
-                handleClickLi: function () {
-                  this.$emit('delete', this.index)
-                }
-            }
-        });
-
-        // 局部组件
-        // var TodoItem = {
-        //     template: "<li>item</li>"
-        // };
-
-        new Vue({
-            el: "#root",
-            // component: {
-            //     "todo-item": TodoItem
-            // },
-            data: {
-                content: "hello",
-                title: "this is Vue",
-                html: "<h1>Vue</h1>",
-                text: "this is text",
-                firstName: "",
-                lastName: "",
-                count: 0,
-                show: true,
-                list: [1, 2, 3],
-                inputValue: "",
-                inputList: []
-            },
-            methods: {
-                handleClick: function () {
-                    this.content = "world"
-                },
-                handleButton: function () {
-                    this.show = !this.show;
-                },
-                handleInput: function () {
-                    this.inputList.push(this.inputValue);
-                    this.inputValue = "";
-                },
-                handleDelete: function (index) {
-                    this.inputList.splice(index, 1);
-                }
-            },
-            computed: {
-                fullName: function () {
-                    return this.firstName + " " + this.lastName
-                }
-            },
-            watch: {
-                fullName: function () {
-                    this.count++
-                }
-            }
-        })
-    </script>
-</body>
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>fe-vue</title>
+  </head>
+  <body>
+    <div id="app"></div>
+    <!-- built files will be auto injected -->
+  </body>
 </html>
